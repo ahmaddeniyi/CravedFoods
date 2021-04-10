@@ -1,0 +1,31 @@
+
+{{> header }}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h1>Log in</h1></br>
+            {{#if hasErrors}}
+            <div class="alert alert-danger">
+                {{# each messages }}
+                <p>{{this}}</p>
+                {{/each}}
+            </div>
+            {{/if}}
+            <form action="/api/user/login" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Log in</button>
+            </form>
+            </br>
+            <p style="padding-bottom: 3em;">Not registered yet? <a href="/api/user/register">Create your account!</a></p>
+        </div>
+    </div>
+</div>
+
+{{> footer }}
