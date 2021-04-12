@@ -252,6 +252,22 @@ body {
   color: #777;
 }
 
+.thumbnail img {
+  width: 100%;
+}
+
+.thumbnail {
+  padding: 0;
+}
+
+.thumbnail .caption-full {
+  padding: 9px;
+}
+
+#delete-form {
+  display: inline;
+}
+
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
@@ -885,6 +901,15 @@ body {
 .story:hover .story__img {
   transform: translateX(-4rem) scale(1);
   filter: blur(3px) brightness(80%);
+}
+
+#howitworks {
+  margin-top: -11.5em;
+  margin-bottom: -2em;
+}
+
+#howitworks h2 {
+  padding-bottom: 1em;
 }
 
 .form__group:not(:last-child) {

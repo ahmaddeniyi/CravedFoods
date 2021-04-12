@@ -2,21 +2,25 @@ const db = require('../models');
 
 // Show all Menus
 exports.getMenus = (req, res) => {
-    db.Menu.find()
-    .then((menus) => {
-        res.json(menus);
-    })
-    .catch((err) => {
-        res.send(err)
+    // Get all menus from DB
+    db.Menu.find({}, (err, allMenus) => {
+        if(err) {
+          console.log(err);
+        } else {
+            console.log(allMenus);
+            res.render("shop/menus", {menus: allMenus});
+        }
     });
 };
 
 // Create new Menu
 exports.createMenu = (req, res) => {
+    // Get data from form and add to menu array
+    var name = 
     db.Menu.create(req.body)
     .then((newMenu) =>{
         res.status(201).json(newMenu)
-    })
+    }) 
     .catch((err) => {
         res.send(err)
     })

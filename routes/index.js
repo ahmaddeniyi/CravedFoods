@@ -6,7 +6,7 @@ const db = require('../models');
 router.use("/public", express.static('public'));
 
 router.get('/', (req, res) => {
-  res.render('shop/index', {title: 'CravedFoods Ordering'});
+  res.render('shop/index');
 })
 
 router.get('/shopping-cart', (req, res) => {
@@ -28,11 +28,15 @@ router.get('/add-to-cart/:id', function(req, res, next) {
 });
 
 router.get('/about', (req, res) => {
-    res.render("home/about", {title: 'About CravedFoods'});
+    res.render("home/about");
 });
 
 router.get('/cities', (req, res) => {
-    res.render("home/cities", {title: "CravedFoods Cities"});
+    res.render("home/cities");
+});
+
+router.get('/howitworks', (req, res) => {
+  res.render("home/howitworks");
 });
 
 module.exports = router;

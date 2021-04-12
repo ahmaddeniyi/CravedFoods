@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+<div class="container">
+     <header class="jumbotron">
+         <div class="container">
+             <h1>Welcome To CravedFoods!</h1>
+             <h3>View our hand-picked Menus just to satisfy your taste!</h3>
+             
+         </div>
+     </header>
+     
+     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% menus.forEach(function(menu){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                   <img src="<%= menu.imagePath %>">
+                   <div class="caption">
+                       <h4><%= menu.title %></h4>
+                   </div>
+                   <div class="caption">
+                       <h3><%= menu.price %>¥</h3>
+                   </div>
+                   <p>
+                       <a href="/api/menus/<%= menu._id %>" class="btn btn-primary">More Info</a>
+                   </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+
+<% include ../partials/footer %>

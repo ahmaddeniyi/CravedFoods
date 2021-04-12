@@ -5,7 +5,7 @@ const helpers = require('../helpers/menu');
 
 router.route('/')
     .get(helpers.getMenus)
-    .post(helpers.createMenu)
+    .post(isLoggedIn, helpers.createMenu)
 
 router.route('/:menuId')
     .get(helpers.getMenu)
@@ -13,3 +13,18 @@ router.route('/:menuId')
     .delete(helpers.deleteMenu)
 
 module.exports = router;
+
+// Middlewares
+function isLoggedIn(req, res, next) {
+    if(req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/');
+}
+
+function notLoggedIn(req, res, next) {
+    if(!req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/')
+}

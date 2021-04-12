@@ -7,23 +7,25 @@ const UserSchema = new mongoose.Schema({
   state: { type: String, required: true },
   city: { type: String, required: true },
   email: { type: String, required: "Email must be entered" },
-  password: String,
+  password: String
 });
 
-// const AdminUserSchema = new mongoose.Schema({
-//     username: {type:String, required: true},
-//     employeeId: {type: String, required: true},
-//     email: {type: String, required: true},
-//     password: {type: String, required:true}
-// });
+const AdminUserSchema = new mongoose.Schema({
+    username: {type:String, required: true},
+    email: {type: String, required: true},
+    password: String
+});
 
 UserSchema.methods.validPassword = function (password) {
   return (this.password === password);
 };
-UserSchema.plugin(passportLocalMongoose);
-// AdminUserSchema.plugin(passportLocalMongoose);
+
+AdminUserSchema.methods.validPassword = function (password) {
+  return (this.password === password);
+};
+
+AdminUserSchema.plugin(passportLocalMongoose);
+AdminUserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model("User", UserSchema);
-// module.exports = mongoose.model('AdminUser', AdminUserSchema);
-
-// module.exports = {User, AdminUser};
+module.exports = mongoose.model('AdminUser', AdminUserSchema);
