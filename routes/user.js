@@ -4,7 +4,6 @@ const passport = require("passport");
 
 const User = require("../models/user");
 // const Cart = require("../models/cart");
-// const Menus = require("../helpers/menu");
 
 // Show signup logic
 router.get("/register", (req, res, next) => {
@@ -25,11 +24,12 @@ router.post("/register", function (req, res, next) {
   User.register(newUser, req.body.password, (err, newlyCreated) => {
     if (err) {
       req.flash("error", err.message);
+      console.log(err);
       console.log("Error registering user");
       return res.render("user/signup");
     }
     passport.authenticate("local")(req, res, () => {
-      req.flash("success", "Welcome to CravedFoods " + newlyCreated.name);
+      req.flash("success", "Welcome to CravedFoods " + newlyCreated.username);
       console.log(newlyCreated);
       // redirect to menu page
       res.redirect("/api/menus/");
@@ -56,6 +56,18 @@ router.get("/logout", (req, res) => {
     req.flash("success", "Logged you out!");
     res.redirect('/api/user/login');
 });
+
+router.get('/myorders', (req, res) => {
+  res.render('user/userorders');
+});
+
+router.get('/add', (req, res) => {
+  res.render('admin/create');
+});
+
+router.get('/account', (req, res) => {
+  res.render('home/accountInfo');
+})
 
 
 module.exports = router;                                                    

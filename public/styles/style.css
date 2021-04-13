@@ -904,12 +904,13 @@ body {
 }
 
 #howitworks {
-  margin-top: -11.5em;
-  margin-bottom: -2em;
+  margin:initial;
+  padding-top: 0;
+  padding-bottom: 5em;
 }
 
-#howitworks h2 {
-  padding-bottom: 1em;
+.u-center-text h2 {
+  padding-bottom: 1.5em;
 }
 
 .form__group:not(:last-child) {

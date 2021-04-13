@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <div class="col-1-of-4">
+            <p class="lead">CravedFoods</p>
+            <div class="list-group">
+                <li class="list-group-item active">Info 1</li>
+                <li class="list-group-item">Info 2</li>
+                <li class="list-group-item">Info 3</li>
+            </div>
+        </div>
+        <div class="col-3-of-4 u-margin-bottom-small">
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%= menu.imagePath %>">
+                <div class="caption-full">
+                    <h4 class="pull-right"><%= menu.price %>¥</h4>
+                    <h4><a><%=menu.title%> {<%=menu.category%>}</a></h4>
+                    <p><%= menu.description %></p>
+                    <p>
+                        <em>Submitted By Admin</em>
+                    </p>
+                    <% if(currentAdmin){ %>
+                        <a class="btn btn-xs btn-warning" href="/api/menus/<%= menu._id %>/edit">Edit</a>
+                        <form id="delete-form" action="/api/menus/<%= menu._id %>?_method=DELETE"  method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+            <a class="btn btn-xs btn-warning" href="/api/menus/<%= menu._id %>/edit">Order<a></a>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

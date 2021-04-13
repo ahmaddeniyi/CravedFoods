@@ -13,5 +13,4 @@ mongoose.Promise = Promise;
 module.exports.Menu = require('./menu');
 module.exports.Order = require('./order');
 module.exports.User = require('./user');
-module.exports.AdminUser = require('./user');
 // module.exports.Cart = require('./cart');
