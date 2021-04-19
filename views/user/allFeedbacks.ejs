@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+
+<section class="section-stories" id="howitworks">
+    <div class="u-center-text">
+        <h2 class="heading-secondary">
+            All Feedbacks from our customers!
+        </h2>
+    </div>
+    <% feedbacks.forEach(function(feedback){ %>
+        <div class="row">
+            <div class="story">
+                <figure class="story__shape">
+
+                    <img srcset="https://image.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg 400w, https://image.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg 2000w"
+                        sizes="(max-width: 56.25em) 13vw, (max-width: 37.5em) 20vw, 180px" alt="Person on a tour"
+                        class="story__img" src="https://image.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg">
+
+                    <figcaption class="story__caption" style="color: rgb(87, 85, 85)">
+                        <%= feedback.username %>
+                    </figcaption>
+                </figure>
+
+                <div class="story__text">
+                    <h3 class="heading-tetiary u-margin-bottom-small">
+                        <%= feedback.heading %>
+                    </h3>
+                    <p>
+                        <%= feedback.body %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+    <div class="u-center-text u-margin-top-huge">
+        <a href="/" class="btn-text">Go Back</a>
+    </div>
+</section>
+<% include ../partials/footer %>

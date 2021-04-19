@@ -12,7 +12,6 @@
 
     <link rel="stylesheet" href="/styles/style.css">
     <script src="https://use.fontawesome.com/231d6eff76.js"></script>
-    <!-- <link rel="shortcut icon" type="image/png" href="img/favicon.png"> -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -329,7 +328,7 @@
             </div>
     
             <div class="u-center-text u-margin-top-huge">
-                <a href="#" class="btn-text">Read all stories &rarr;</a>
+                <a href="/api/user/allfeedbacks" class="btn-text">Read all stories &rarr;</a>
             </div>
         </section>
     
@@ -345,13 +344,13 @@
                             </div>
     
                             <div class="form__group">
-                                <input type="text" class="form__input" placeholder="Full name" id="name" required>
-                                <label for="name" class="form__label">Full name</label>
+                                <input type="text" class="form__input" placeholder="Username" id="name" name="username" required>
+                                <label for="name" class="form__label">Username</label>
                             </div>
     
                             <div class="form__group">
-                                <input type="email" class="form__input" placeholder="Email address" id="email" required>
-                                <label for="email" class="form__label">Email address</label>
+                                <input type="password" name="Password" class="form__input" placeholder="Password" id="email" required>
+                                <label for="email" class="form__label">Password</label>
                             </div>
     
                             <div class="form-group">
@@ -371,7 +370,7 @@
                                     </label>
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn--orange">Next step &rarr;</button>
+                                    <button type="submit " class="btn btn--orange">Next step &rarr;</button>
                                 </div>
                             </div>
                         </form>

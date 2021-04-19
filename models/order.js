@@ -3,15 +3,18 @@ const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
     user: {type: Schema.Types.ObjectId, ref: 'User'},
-    cart: {type: Object, required: true},
-    date: {type: String, required:true},
-    time: {type: Date, default: Date.now, required: true},
-    preparing: {type: Boolean, required:true},
-    onTheWay: {type:Boolean, required: true},
-    delivered: {type:Boolean, required: true},
+    username: {type: String, required: true},
+    menuOrdered: {type: String, required: true},
+    totalPrice: {type: Number, required: true},
+    date: {type: Date, default: Date.now},
+    time: {type: Date, default: new Date()},
+    quantity: {type: Number, required: true},
+    district: {type: String, required: true},
+    preparing: {type: Boolean, default: true},
+    onTheWay: {type:Boolean, default: false},
+    delivered: {type:Boolean, default: false},
     address: {type:String, required: true},
-    name: {type:String, required: true},
-    paymentId: {type:String, required: true}
+    paymentId: {type:String, default: "PAID"}
 })
 
 const Order = mongoose.model('Order', orderSchema);

@@ -8,7 +8,7 @@ exports.getMenus = (req, res) => {
     db.Menu.find()
     .then((allMenus) => {
         console.log(allMenus);
-        res.render("shop/menus", {menus: allMenus, });
+        res.render("shop/menus", {menus: allMenus});
     })
     .catch((err) => {
         req.flash("error", err.message);
@@ -38,7 +38,7 @@ exports.createMenu = (req, res) => {
     })
 }
 
-// Show details menu using its ID
+// Show details of menu using its ID
 exports.getMenu = (req, res) => {
     const menuId = req.params.menuId;
     db.Menu.findById(menuId)
@@ -70,13 +70,54 @@ exports.updateMenu = (req, res) => {
 exports.deleteMenu = (req, res) => {
     db.Menu.findOneAndDelete({_id: req.params.menuId})
     .then(() => {
-        res.redirect('/api/menus');
         req.flash("success", "Menu deleted successfully");
+        res.redirect('/api/menus');
     })
     .catch((err) => {
-        res.redirect('/api/menus')
         req.flash("error", err.message);
+        res.redirect('/api/menus');
     })
 }
+
+// ====================
+// Orders Routes
+// ====================
+exports.getOrderPage = (req, res, next) => {
+    const menuId = req.params.menuId;
+    db.Menu.findById(menuId)
+    .then((foundMenu) => {
+        console.log(foundMenu)
+        //render order template
+        res.render("shop/order", {menu: foundMenu});
+    })
+    .catch((err) => {
+        req.flash("error", err.message);
+        console.log(err);
+    });
+}
+
+exports.orderMenu = (req, res, next) => {
+    let user = req.user;
+    let username = req.user.username;
+    let paymentId = req.body.paymentId;
+    let menuOrdered = req.body.title;
+    let quantity = req.body.quantity;
+    let totalPrice = req.body.price * req.body.quantity;
+    let address = req.body.address;
+    let district = req.body.district;
+
+    let newOrder = {user: user, username: username, paymentId: paymentId, menuOrdered: menuOrdered, quantity: quantity, totalPrice: totalPrice, address: address, district: district};
+    db.Order.create(newOrder)
+    .then((newOrder) => {
+        console.log(newOrder);
+        req.flash("success", "Your " +  quantity + " plates of " + menuOrdered + " will be delivered shortly!");
+        res.status(201).redirect("/api/menus");
+    })
+  .catch((err) => {
+    req.flash("error", err.message);
+    console.log(err);
+  });
+}
+
 
 module.exports = exports;   

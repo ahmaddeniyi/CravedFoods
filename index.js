@@ -73,6 +73,7 @@ app.get("/", (req, res) => {
   });
 });
 
+
 app.use("/api/", routes);
 app.use("/api/menus/", menuRoutes);
 app.use("/api/user/", userRoutes);

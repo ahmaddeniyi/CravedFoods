@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+
+<table class="table" style="height: 80vh;">
+    <thead>
+      <tr>
+        <th scope="col">SN</th>
+        <th scope="col">Username</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Email</th>
+        <th scope="col">Delivery Address</th>
+        <th scope="col">City</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+       <% let count = 1; %> 
+       <% users.forEach(function(user){ %>
+        
+        <tr>
+          <th scope="row"><%= count++ %></th>
+          <td><%= user.username %></td>
+          <td><%= user.phoneNo %></td>
+          <td><%= user.email %></td>
+          <td><%= user.state %></td>
+          <td><%= user.city %></td>
+          <td>
+            <form id="delete-form" action="/api/user/<%= user._id %>?_method=DELETE" method="POST">
+              <button class="btn btn-xs btn-danger">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
+  <% include ../partials/footer %>

@@ -1,0 +1,51 @@
+<% include ../partials/header %>
+
+<table class="table" style="height: 65vh;">
+    <thead>
+      <tr>
+        <th scope="col">SN</th>
+        <th scope="col">Date of Order</th>
+        <th scope="col">Number of Plates</th>
+        <th scope="col">Delivery Address</th>
+        <th scope="col">Payment Status</th>
+        <th scope="col">Delivery Status</th>
+        <th scope="col">Total Price</th>
+        <!-- <th scope="col">Action</th> -->
+      </tr>
+    </thead>
+    <tbody>
+       <% let count = 1; %> 
+       <% orders.forEach(function(order){ %>
+        
+        <tr>
+          <th scope="row"><%= count++ %></th>
+          <td><%= order.date.toDateString() %></td>
+          <td><%= order.quantity %></td>
+          <td><%= order.address %></td>
+          <td>PAID</td>
+          <td>
+            <% if(order.delivered) { %>
+                <i class="fa fa-check-square" aria-hidden="true"></i>
+                <span class="label label-default">Delivered</span>
+            <% } else if(order.preparing) { %>
+                <i class="fa fa-spinner" aria-hidden="true"></i>
+                <span class="label label-default">Preparing</span>
+            <% } else if(order.onTheWay) { %>
+                <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                <span class="label label-default">On the way</span>
+            <% } %>
+          </td>
+          <td><%= order.totalPrice %>¥</td>
+          <!-- <td>
+            <form id="delete-form" action="/api/user/order/<%= order._id %>?_method=DELETE" method="POST">
+              <button class="btn btn-xs btn-danger">Delete</button>
+            </form>
+          </td> -->
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
+  
+  <% include ../partials/footer %>
+
+

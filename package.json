@@ -4,7 +4,6 @@
   "description": "undergraduate project",
   "main": "index.js",
   "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
@@ -23,9 +22,11 @@
     "path": "^0.12.7",
     "serve-favicon": "^2.5.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "author": "Ahmad",
   "license": "ISC"

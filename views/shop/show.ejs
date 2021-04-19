@@ -10,6 +10,12 @@
             </div>
         </div>
         <div class="col-3-of-4 u-margin-bottom-small">
+            <% if(currentUser) { %>
+                <div class="alert alert-warning" role="alert">
+                    Dear Customer: Ensure that your Payment ID is correct as your food will only be delivered after verification! 
+                </div>
+            <% } %>
+            <h4></h4>
             <div class="thumbnail">
                 <img class="img-responsive" src="<%= menu.imagePath %>">
                 <div class="caption-full">
@@ -27,7 +33,7 @@
                     <% } %>
                 </div>
             </div>
-            <a class="btn btn-xs btn-warning" href="/api/menus/<%= menu._id %>/edit">Order<a></a>
+            <a class="btn btn-xs btn-warning" href="/api/menus/<%= menu._id %>/placeorder">Order Now!</a>
         </div>
     </div>
 </div>

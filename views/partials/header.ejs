@@ -3,25 +3,25 @@
 <nav class="navbar navbar-default u-margin-bottom-small">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">CravedFoods</a>
+            <a class="navbar-brand" href="/"><i class="fa fa-cutlery" aria-hidden="true"></i> CravedFoods</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <% if(!currentUser){ %>
-                    <li><a href="/api/user/login">Login</a></li>
-                    <li><a href="/api/user/register">Sign Up</a></li>
+                <li><a href="/api/user/login">Login</a></li>
+                <li><a href="/api/user/register">Sign Up</a></li>
                 <% } else if (currentAdmin) { %>
-                    <li><a href="#">Signed In As Admin</a></li>
-                    <li><a href="/api/user/add">Create Menu</a></li>
-                    <li><a href="/api/user/myorders">View Orders</a>
-                    <li><a href="/api/user/logout">Logout</a></li>
+                <li><a href="#">Signed In As Admin</a></li>
+                <li><a class="dropdown-item" href="/api/user/add">Create Menu</a></li>
+                <li><a class="dropdown-item" href="/api/user/allorders">Manage Orders</a></li>
+                <li><a class="dropdown-item" href="/api/user/allusers">All Users</a></li>
+                <li><a href="/api/user/logout">Logout</a></li>
                 <% } else { %>
-                    <li><a href="#">Signed In As <%= currentUser.username %></a></li>
-                    <li><a href="/api/user/profile">Update Profile</a></li>
-                    <li><a href="/api/user/myorders">My Orders</a></li>
-                    <li><a href="/api/user/account">Payment</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="/api/user/logout">Logout</a></li>
+                <li><a href="#">Signed In As <%= currentUser.username %></a></li>
+                <li><a class="dropdown-item" href="/api/user/profile">Update Profile</a></li>
+                <li><a class="dropdown-item" href="/api/user/myorders">View Orders</a></li>
+                <li><a class="dropdown-item" href="/api/user/feedback">Send Feedback</a></li>
+                <li><a href="/api/user/logout">Logout</a></li>
                 <% } %>
             </ul>
         </div>
@@ -29,15 +29,16 @@
 </nav>
 
 <div class="container">
-    
+
     <% if(error && error.length > 0){ %>
-        <div class="alert alert-danger" role="alert">
-            <%= error %>
-        </div>
+    <div class="alert alert-danger" role="alert">
+        <%= error %>
+    </div>
     <% } %>
     <% if(success && success.length > 0){ %>
-        <div class="alert alert-success" role="alert">
-            <%= success %>
-        </div>
+    <div class="alert alert-success" role="alert">
+        <%= success %>
+    </div>
     <% } %>
 </div>
+
