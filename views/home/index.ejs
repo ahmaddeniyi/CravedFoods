@@ -20,19 +20,7 @@
 
     <title>CravedFoods | Home of Premium foods</title>
 </head>
-<body>
-    <div class="container">
-        <% if(error && error.length > 0){ %>
-            <div class="alert alert-danger" role="alert">
-                <%= error %>
-            </div>
-        <% } %>
-        <% if(success && success.length > 0){ %>
-            <div class="alert alert-success" role="alert">
-                <%= success %>
-            </div>
-        <% } %>
-    </div>    
+<body>   
     <div class="navigation">
         <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
     
@@ -336,7 +324,19 @@
             <div class="row">
                 <div class="book">
                     <div class="book__form">
-                        <form action="#" class="form">
+                        <div class="container">
+                            <% if(error && error.length > 0){ %>
+                                <div class="alert alert-danger" role="alert">
+                                    <%= error %>
+                                </div>
+                            <% } %>
+                            <% if(success && success.length > 0){ %>
+                                <div class="alert alert-success" role="alert">
+                                    <%= success %>
+                                </div>
+                            <% } %>
+                        </div> 
+                        <form action="/api/user/login" method="post" class="form">
                             <div class="u-margin-bottom-medium">
                                 <h2 class="heading-secondary">
                                     Start Ordering Now

@@ -4,7 +4,7 @@ CravedFoods is a food ordering system that allows the 'admin' to create menus, m
 
 ## Motivation
 
-To save eaters the stress of going down all the way to the cafeteria just to buy their favorite meal.
+To save eaters the stress of going all the way down to the cafeteria just to buy their favorite meal.
 
 ## Technologies Used
 
@@ -50,7 +50,7 @@ Run: ctrl + c
 ## Open a web browser to
 
 - [CravedFoods App](http://localhost:3000/) - Home Page
-- [CraveDFoods App (Login Page)](http://localhost:8000/api/user/login) - Login page -
+- [CravedFoods App (Login Page)](http://localhost:8000/api/user/login) - Login page -
 
 ### To Login as the ADMIN
 
